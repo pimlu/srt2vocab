@@ -1,0 +1,5 @@
+build/
+dist/
+res/
+nbproject/private/
+temp/
