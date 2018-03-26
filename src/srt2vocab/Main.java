@@ -15,7 +15,7 @@ public class Main {
                     + "  srt2vocab file1.srt file2.srt etc.srt > deck.csv");
         } else if(args[0].equals("-dict")) {
             if(args.length != 2)
-                die("Need 2 arguments for -dict, got "+args.length);
+                die("need 2 arguments for -dict, got "+args.length);
             VocabSplit.getVocab(args[1]);
         } else {
             for(String f : args) {
