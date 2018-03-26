@@ -11,6 +11,8 @@ public class Main {
         System.out.println("took "+elapsed);
         String test = "私はたべたい";
         VocabSplit.getVocab(test);
+        //for(String s : SrtReader.getLines(args[0]))
+        //    System.out.println(s);
     }
     
 }
