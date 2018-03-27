@@ -1,25 +1,22 @@
 package srt2vocab;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class SrtReader {
-    public static ArrayList<String> getLines(String path)
+    public static ArrayList<String> getLines(InputStream input)
             throws FileNotFoundException, ParseException, UnsupportedEncodingException, IOException {
         ArrayList<String> lines = new ArrayList();
-        BufferedReader sc = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
+        BufferedReader sc = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));
         //Scanner sc = new Scanner(new File(path));
         skip(sc);
         String timestamp = "[0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]+";
@@ -31,11 +28,13 @@ public class SrtReader {
             lnum++;
             expect(timeFmt, "timestamp", lnum, sc.readLine());
             lnum++;
-            while(true) {
+            // possible to have empty subs... (why?!)
+            for(boolean first=true; true; first=false) {
                 l = sc.readLine();
-                if(l.isEmpty()) break;
-                lines.add(l);
                 lnum++;
+                if(l.isEmpty()) {
+                    if(!first) break;
+                } else lines.add(l);
             }
         }
         return lines;

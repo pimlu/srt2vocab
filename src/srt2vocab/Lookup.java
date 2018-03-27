@@ -90,7 +90,7 @@ public class Lookup {
         pm.add("接尾辞", "n-suf suf".split(" "));
         
         String[] none = new String[0];
-               
+        
         // Hide punctuation
         pm.add("補助記号", none);
         // ???
@@ -124,11 +124,21 @@ public class Lookup {
     }
     public static List<Def> lookup(String word, String read, String pos) {
         List<String> jmdpos = posmap.get(pos);
+        List<Def> match = null;
         // Shouldn't occur, but better to not crash
         if(jmdpos == null) return null;
-        if(words.has(word)) return filter(words.get(word), jmdpos, false);
+        //TODO better system for filtering?
+        if(words.has(word)) {
+            match = filter(words.get(word), jmdpos, false);
+            if(match.isEmpty()) match = null;
+            if(match != null) return match;
+        }
         String hira = process(read);
-        if(phons.has(hira)) return filter(phons.get(hira), jmdpos, false);
+        if(phons.has(hira)) {
+            match = filter(phons.get(hira), jmdpos, false);
+            if(match.isEmpty()) match = null;
+            if(match != null) return match;
+        }
         return null;
     }
 }

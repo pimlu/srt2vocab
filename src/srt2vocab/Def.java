@@ -82,4 +82,7 @@ public class Def implements Serializable {
         String body = "  "+String.join("\n  ", Stream.of(senses).map(s -> s.toString()).collect(Collectors.toList()));
         return header + body;
     }
+    public String toHTML() {
+        return toString();
+    }
 }

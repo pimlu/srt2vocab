@@ -32,7 +32,6 @@ public class CSVReader implements Iterable<CSVRecord> {
     }
     public static void writeSerializable(Serializable s, String path)
             throws IOException {
-        
         FileOutputStream fos = null;
         ObjectOutputStream out = null;
         fos = new FileOutputStream(path);
