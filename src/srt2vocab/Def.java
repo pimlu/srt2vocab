@@ -27,6 +27,14 @@ public class Def implements Serializable {
             String sep = "\n    ";
             return prefix + sep + String.join(sep, glosses);
         }
+        public String toHTML() {
+            String prefix = String.format("  <div class=\"s\">%s; %s.</div>\n",
+                    String.join(", ", pos), String.join(", ", misc));
+            prefix += "  <ul>\n    <li>";
+            String sep = "</li>\n    <li>";
+            String post = "</li>\n  </ul>";
+            return prefix + String.join(sep, glosses) + post;
+        }
     }
     public int eid;
     public String[] words, readings;
@@ -78,11 +86,18 @@ public class Def implements Serializable {
     }
     
     public String toString() {
-        String header = String.join(", ", words) + ": [" + String.join(", ", readings) + "]\n";
-        String body = "  "+String.join("\n  ", Stream.of(senses).map(s -> s.toString()).collect(Collectors.toList()));
+        String header = String.format("%s: [%s]\n",String.join(", ", words),
+                String.join(", ", readings));
+        String body = "  "+String.join("\n  ", Stream.of(senses)
+                .map(s -> s.toString()).collect(Collectors.toList()));
         return header + body;
     }
     public String toHTML() {
-        return toString();
+        String header = String.format("<div class=\"d\">\n"
+                + "<div class=\"t\">%s: [%s]</div>\n",String.join(", ", words),
+                String.join(", ", readings));
+        String body = String.join("\n", Stream.of(senses)
+                .map(s -> s.toHTML()).collect(Collectors.toList()));
+        return header + body + "\n</div>";
     }
 }

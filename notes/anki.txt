@@ -1,0 +1,65 @@
+{{Written}}
+
+=====
+
+.card {
+     font-family: arial;
+     font-size: 20px;
+     text-align: center;
+     color: black;
+     background-color: white;
+}
+ .space {
+     height: 10px;
+}
+ .d {
+     display: inline-block;
+     border: 1px solid #999;
+     padding-left: 20px;
+     padding-right: 20px;
+     text-align: left;
+     margin: 7px;
+}
+ .d > .t {
+     text-align: center;
+}
+ .d > .s {
+     margin-left: 0;
+     padding-left:0;
+     padding-right: 0;
+     color: #888;
+     font-style: italic;
+     counter-increment: step-counter;
+}
+ .d >.s::before {
+     content: counter(step-counter);
+     margin-right: 5px;
+     font-size: 80%;
+     background-color: #bbb;
+     color: white;
+     font-weight: bold;
+     font-style: normal;
+     padding: 3px 8px;
+     border-radius: 3px;
+}
+ .d ul {
+     margin: 2px;
+     margin-left: -10px;
+}
+ .d ul > li {
+     font-size: 0.9em;
+     list-style: none;
+     text-indent: -1em;
+}
+ .d li::before {
+     content: "•";
+     padding-right: 10px;
+}
+
+=====
+
+{{FrontSide}}
+
+<div class="space"> </div>
+
+{{Definition}}
