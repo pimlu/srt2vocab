@@ -1,4 +1,4 @@
-package srt2vocab;
+package pimlu;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ public class CSVReader implements Iterable<CSVRecord> {
     public static InputStream readFile(String path)
             throws FileNotFoundException {
         InputStream is = CSVReader.class.getClassLoader()
-                    .getResourceAsStream("resources/"+path);
+                    .getResourceAsStream(path);
         if(is != null) return is;
         return new FileInputStream("res/"+path);
     }

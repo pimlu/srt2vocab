@@ -1,4 +1,7 @@
-package srt2vocab;
+package pimlu;
+
+// This code is MIT licensed under Matthew Miller.
+// https://github.com/MasterKale/WanaKanaJava/blob/master/LICENSE
 
 import java.util.HashMap;
 import java.util.regex.Matcher;

@@ -1,4 +1,4 @@
-package srt2vocab;
+package pimlu;
 
 import java.io.IOException;
 import java.util.ArrayList;

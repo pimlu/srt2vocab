@@ -1,5 +1,3 @@
-build/
-dist/
+target/
 res/
-nbproject/private/
-temp/
+nbactions.xml

@@ -1,4 +1,4 @@
-package srt2vocab;
+package pimlu;
 
 import com.atilika.kuromoji.unidic.Token;
 import com.atilika.kuromoji.unidic.Tokenizer;
