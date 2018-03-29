@@ -27,7 +27,7 @@ The most common words show up first, so you'll see the common essentials to unde
 
 ### Building from source
 
-This is a Maven project which should download its dependencies when you attempt to build.  I didn't want to commit >15MB of CSVs to the repo so that's missing.  I'll publish that soon along with the jar.
+This is a Maven project which should download its dependencies when you attempt to build.  This uses a bunch of dictionary data; I didn't want to commit >15MB of CSVs to the repo so that's in the [`res` branch](https://github.com/pimlu/srt2vocab/tree/res).
 
 ### Bug reports
 
