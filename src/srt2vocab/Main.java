@@ -31,7 +31,7 @@ public class Main {
             dc.writeTSV(args[1]);
         }
     }
-    static void init() throws IOException {
+    public static void init() throws IOException {
         System.out.println("initting...");
         long start = System.currentTimeMillis();
         Lookup.init();

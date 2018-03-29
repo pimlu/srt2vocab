@@ -2,6 +2,7 @@ package srt2vocab;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -49,10 +50,12 @@ public class DefCounter  {
         defs.get(dt).hit(written);
     }
     public void writeTSV(String path) throws IOException {
-        BufferedWriter writer = null;
+        Writer writer = Files.newBufferedWriter(Paths.get(path));
+        writeTSV(writer);
+    }
+    public void writeTSV(Writer writer) throws IOException {
         CSVPrinter p = null;
         try {
-            writer = Files.newBufferedWriter(Paths.get(path));
             p = new CSVPrinter(writer, CSVFormat.POSTGRESQL_TEXT);
             ArrayList<DefText> freq = new ArrayList(defs.keySet());
             freq.sort((a,b) -> Integer.compare(b.hits(), a.hits()));
