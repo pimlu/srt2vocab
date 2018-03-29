@@ -1,6 +1,7 @@
 # Srt2Vocab
 ###### Converts subtitles into Anki decks
 
+![Example Anki card](notes/anki.png)
 
 ### What it is
 

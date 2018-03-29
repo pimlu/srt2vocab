@@ -22,14 +22,21 @@ public class Def implements Serializable {
                 if(m.equals(str)) return true;
             return false;
         }
+        
+        public String meta() {
+            String l = String.join(", ", pos);
+            String r = String.join(", ", misc);
+            return String.join("; ", (Iterable)
+                    Stream.of(l, r).filter(s -> !s.isEmpty())::iterator);
+        }
         public String toString() {
-            String prefix = String.join(", ", pos)+"; "+String.join(", ", misc);
+            String prefix = meta();
             String sep = "\n    ";
             return prefix + sep + String.join(sep, glosses);
         }
         public String toHTML() {
-            String prefix = String.format("  <div class=\"s\">%s; %s.</div>\n",
-                    String.join(", ", pos), String.join(", ", misc));
+            String prefix = String.format("  <div class=\"s\">%s.</div>\n",
+                    meta());
             prefix += "  <ul>\n    <li>";
             String sep = "</li>\n    <li>";
             String post = "</li>\n  </ul>";
@@ -84,18 +91,23 @@ public class Def implements Serializable {
                 .filter(s -> s.misc(str)).toArray(Sense[]::new);
         return def;
     }
-    
+    public String title() {
+        String t = "";
+        String w = String.join(", ", words);
+        if(!w.isEmpty()) t += w+": ";
+        String r = String.join(", ", readings);
+        if(!r.isEmpty()) t += "["+r+"]";
+        return t.trim();
+    }
     public String toString() {
-        String header = String.format("%s: [%s]\n",String.join(", ", words),
-                String.join(", ", readings));
+        String header = title()+"\n";
         String body = "  "+String.join("\n  ", Stream.of(senses)
                 .map(s -> s.toString()).collect(Collectors.toList()));
         return header + body;
     }
     public String toHTML() {
         String header = String.format("<div class=\"d\">\n"
-                + "<div class=\"t\">%s: [%s]</div>\n",String.join(", ", words),
-                String.join(", ", readings));
+                + "<div class=\"t\">%s</div>\n", title());
         String body = String.join("\n", Stream.of(senses)
                 .map(s -> s.toHTML()).collect(Collectors.toList()));
         return header + body + "\n</div>";
