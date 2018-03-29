@@ -19,8 +19,7 @@ The most common words show up first, so you'll see the common essentials to unde
 
 ### Usage
 
-(I'm going to release a jar shortly.)
-
+ * Download the [latest release](https://github.com/pimlu/srt2vocab/releases).
  * Acquire Japanese subtitle files.
  * `java -jar srt2vocab.jar --srt output_deck.tsv input_subtitle_*.srt`
  * Open the empty vocab apkg which contains the HTML/CSS for the cards. (which I'll upload shortly)
