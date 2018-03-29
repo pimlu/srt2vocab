@@ -22,7 +22,7 @@ The most common words show up first, so you'll see the common essentials to unde
  * Download the [latest release](https://github.com/pimlu/srt2vocab/releases).
  * Acquire Japanese subtitle files.
  * `java -jar srt2vocab.jar --srt output_deck.tsv input_subtitle_*.srt`
- * Open the empty vocab apkg which contains the HTML/CSS for the cards. (which I'll upload shortly)
+ * Open the [placeholder apkg](https://github.com/pimlu/srt2vocab/raw/res/Srt2Vocab.apkg) which contains the HTML/CSS for the cards.
  * Import `output_deck.tsv` into the empty deck you just created.  Make sure to allow HTML.
 
 ### Building from source
