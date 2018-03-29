@@ -16,9 +16,7 @@ public class SrtReader {
     public static ArrayList<String> getLines(InputStream input)
             throws FileNotFoundException, ParseException, UnsupportedEncodingException, IOException {
         ArrayList<String> lines = new ArrayList();
-        BufferedReader sc = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));
-        //Scanner sc = new Scanner(new File(path));
-        skip(sc);
+        BufferedReader sc = readStream(input);
         String timestamp = "[0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]+";
         String numFmt = "[0-9]+";
         String timeFmt = timestamp+" --> "+timestamp;
@@ -53,5 +51,11 @@ public class SrtReader {
         if (possibleBOM[0] != '\ufeff') {
             reader.reset();
         }
+    }
+    public static BufferedReader readStream(InputStream input) throws IOException {
+        BufferedReader sc = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));
+        //Scanner sc = new Scanner(new File(path));
+        skip(sc);
+        return sc;
     }
 }
